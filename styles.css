@@ -141,7 +141,6 @@ nav ul li a:hover::after {
   color: var(--text-light);
   position: relative;
   overflow: hidden;
-  border: 2px solid var(--primary);
 }
 
 .hero-left {
@@ -638,8 +637,6 @@ footer {
   padding: 2rem 0;
   border-top: 1px solid var(--secondary);
   background-color: var(--bg-dark); 
-  
-  border: 2px solid var(--primary);
 }
 
 footer .container {
@@ -788,9 +785,9 @@ footer .social-links a:hover {
   .skills {
     display: flex;
     flex-direction: column;
-    align-items: center;  /* Center the content horizontally */
-    justify-content: center;  /* Center the content vertically */
-    text-align: center;  /* Make sure text is centered */
+    align-items: center;
+    justify-content: center; 
+    text-align: center; 
   }
 
   .skills h3 {
