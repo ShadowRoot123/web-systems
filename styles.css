@@ -9,6 +9,8 @@
   --border: #666666;
   --popup-bg: #ffffff;
   --popup-text: #333333;
+  --text-light: #ffffff; /* Added for clarity in dark background sections */
+  --bg-dark: #1c1a19; /* Added for clarity */
 }
 
 * {
@@ -158,11 +160,12 @@ nav ul li a:hover::after {
   gap: 1.5rem;
   padding-top: 0.5rem;
   position: absolute; /* Absolute positioning to move freely */
-  left: 0; 
+  left: 0;
+  color: var(--foreground); /* Ensure icons are visible */
 }
 
 .social-icons a {
-  color: var(--text-light);
+  color: inherit; /* Inherit color from parent */
   font-size: 1.2rem;
   transition: color 0.3s ease;
 }
@@ -182,6 +185,8 @@ nav ul li a:hover::after {
 
 .hero-content {
   max-width: 600px;
+  position: relative; /* Ensure content is above decoration */
+  z-index: 2;
 }
 
 .hero h1 {
@@ -209,17 +214,12 @@ nav ul li a:hover::after {
   max-width: 500px;
 }
 
-.hero-decoration img {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-}
 
 .hero-decoration {
   position: absolute;
   top: 0;
-  right: -17%; /* Move the decoration 50% outside of the screen */
-  width: 50%;
+  right: -7%; /* Move the decoration 17% outside of the screen */
+  width: 50%; /* Relative to container width */
   z-index: 1;
 }
 
@@ -228,6 +228,12 @@ nav ul li a:hover::after {
 .works {
   padding: 5rem 0;
   text-align: center;
+  background-color: var(--foreground);
+  color: var(--popup-text); 
+}
+
+.works .container {
+    padding: 0 1rem;
 }
 
 .featured-project {
@@ -235,10 +241,10 @@ nav ul li a:hover::after {
   flex-direction: column;
   gap: 2rem;
   margin-bottom: 3rem;
-  background-color: rgba(255, 255, 255, 0.05);
   padding: 2rem;
   border-radius: 2px;
   text-align: left;
+
 }
 
 .project-info h3 {
@@ -247,7 +253,7 @@ nav ul li a:hover::after {
 }
 
 .project-info p {
-  color: var(--muted);
+  color: var(--bg-dark);
   margin-bottom: 1.5rem;
 }
 
@@ -259,48 +265,22 @@ nav ul li a:hover::after {
 }
 
 .tags span {
-  background-color: var(--secondary);
+  background-color: var(--muted);
   padding: 0.3rem 0.8rem;
   border-radius: 2px;
+  border: 1px solid var(--border);
   font-size: 0.9rem;
 }
 
-.project-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
-/* Common project card style */
-.project-card {
-  height: 400px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  border-radius: 4px;
-  overflow: hidden;
-  transition: transform 0.4s ease;
-}
-
-.project-card:hover {
-  transform: scale(1.05);
-}
-
-/* Unique background images per card */
-.project-1 { background-image: url('imges/project1.png'); }
-.project-2 { background-image: url('imges/project2.png'); }
-.project-3 { background-image: url('imges/project3.png'); }
-.project-4 { background-image: url('imges/project1.png'); }
-.project-5 { background-image: url('imges/project2.png'); }
-.project-6 { background-image: url('imges/project3.png'); }
-
+/* Project Grid */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
-  padding: 2rem;
+  padding: 0 1rem; /* Add padding for mobile */
 }
 
+/* Common project card style */
 .project-card {
   position: relative;
   height: 400px;
@@ -319,59 +299,13 @@ nav ul li a:hover::after {
   transform: scale(1.02);
 }
 
-.overlay {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
-  color: #fff;
-  padding: 1.5rem;
-  transition: background 0.3s ease;
-  z-index: 2;
-}
-
-.overlay h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.overlay p {
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-  color: #ddd;
-}
-
-.tags span {
-  display: inline-block;
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 3px;
-  padding: 0.3rem 0.6rem;
-  margin-right: 0.4rem;
-  font-size: 0.8rem;
-  color: #fff;
-}
-
-.see-project-btn {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #ff5722;
-  color: white;
-  text-align: center;
-  padding: 0.8rem 0;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-decoration: none;
-  opacity: 0;
-  transform: translateY(100%);
-  transition: all 0.3s ease;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.project-card:hover .see-project-btn {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Unique background images per card */
+.project-1 { background-image: url('imges/project1.png'); }
+.project-2 { background-image: url('imges/project2.png'); }
+.project-3 { background-image: url('imges/project3.png'); }
+.project-4 { background-image: url('imges/project1.png'); } 
+.project-5 { background-image: url('imges/project2.png'); }
+.project-6 { background-image: url('imges/project3.png'); } 
 
 
 /* Overlay styling */
@@ -390,7 +324,7 @@ nav ul li a:hover::after {
 
 .project-card:hover .project-overlay {
   opacity: 0;
-  pointer-events: none;
+  pointer-events: none; /* Allows clicking the button underneath */
 }
 
 /* Text inside overlay */
@@ -418,9 +352,35 @@ nav ul li a:hover::after {
   display: inline-block;
 }
 
+/* See Project Button on hover */
+.see-project-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--primary); /* Use primary color */
+  color: white;
+  text-align: center;
+  padding: 0.8rem 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none; /* Ensure it's not underlined */
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: none; /* Remove default button border */
+  cursor: pointer; /* Indicate it's clickable */
+  z-index: 2; /* Ensure it's above overlay */
+}
+
+.project-card:hover .see-project-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 
-/* Popup styles (unchanged from your original) */
+/* Popup styles */
 .project-popup {
   position: fixed;
   top: 0;
@@ -429,20 +389,11 @@ nav ul li a:hover::after {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1000;
-  display: flex;
+  display: none; /* Controlled by JavaScript */
   justify-content: center;
   align-items: center;
   padding: 20px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-
-.project-popup:target {
-  opacity: 1;
-  visibility: visible;
-}
-
 
 .popup-content {
   background-color: var(--popup-bg);
@@ -477,8 +428,11 @@ nav ul li a:hover::after {
   right: 20px;
   font-size: 2rem;
   color: #666;
+  background: none; /* Remove default button background */
+  border: none; /* Remove default button border */
   text-decoration: none;
   line-height: 1;
+  cursor: pointer;
 }
 
 .popup-tags {
@@ -533,9 +487,18 @@ nav ul li a:hover::after {
 /* About Section */
 .about {
   padding: 5rem 0;
-  background-color: var(--secondary);
+  background-color: var(--background);
   position: relative;
   overflow: hidden;
+}
+
+.about .container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .about-content {
@@ -548,14 +511,16 @@ nav ul li a:hover::after {
   color: var(--muted);
   margin-bottom: 2rem;
   max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .about-decoration {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 300px;
-  height: 300px;
+  width: 300px; /* Default size */
+  height: 300px; /* Default size */
   z-index: 1;
 }
 
@@ -590,6 +555,7 @@ nav ul li a:hover::after {
 .contact {
   padding: 5rem 0;
   background-color: var(--foreground);
+  color: var(--popup-text); /* Use popup-text for dark text on light background */
 }
 
 .contact .container {
@@ -602,7 +568,7 @@ nav ul li a:hover::after {
   font-size: 1.8rem;
   margin-bottom: 2rem;
   max-width: 600px;
-  color: black;
+  color: inherit; /* Inherit color from parent (.contact) */
 }
 
 .contact-form form {
@@ -615,12 +581,18 @@ nav ul li a:hover::after {
 .form-group textarea {
   width: 100%;
   padding: 0.8rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid var(--muted);
+  background-color: #f1f1f1; /* Light background for inputs */
+  border: 1px solid #ccc; /* Lighter border */
   border-radius: 2px;
-  color: var(--foreground);
+  color: var(--popup-text); /* Dark text color */
   font-family: inherit;
 }
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #888; /* Placeholder color */
+}
+
 
 .form-group input:focus,
 .form-group textarea:focus {
@@ -635,8 +607,8 @@ nav ul li a:hover::after {
 /* Footer */
 footer {
   padding: 2rem 0;
-  border-top: 1px solid var(--secondary);
-  background-color: var(--bg-dark); 
+  background-color: var(--foreground);
+  color: var(--bg-dark); /* Ensure footer text is light */
 }
 
 footer .container {
@@ -652,9 +624,8 @@ footer .social-links {
   width: 100%;
 }
 
-
 footer .social-links a {
-  color: var(--text-light); /* or any color you prefer */
+  color: inherit; /* Inherit color from parent (footer) */
   font-size: 1.2rem;
   transition: color 0.3s ease;
 }
@@ -664,52 +635,70 @@ footer .social-links a:hover {
 }
 
 
+/* CSS to prevent scrolling on the body when a popup is open */
+body.no-scroll {
+    overflow: hidden;
+}
+
+
 /* Media Queries */
 @media (min-width: 768px) {
   .featured-project {
     flex-direction: row;
   }
-  
+
   .project-image,
   .project-info {
     flex: 1;
   }
-  
+
   .project-grid {
     grid-template-columns: repeat(2, 1fr);
+    padding: 0 1rem; /* Maintain padding on larger screens */
   }
-  
+
   .skills .container {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .contact .container {
     flex-direction: row;
   }
-  
+
   .contact-text,
   .contact-form {
     flex: 1;
   }
-  
+
   footer .container {
     flex-direction: row;
     justify-content: space-between;
   }
-  
+
   .popup-body {
     display: flex;
     gap: 30px;
   }
-  
+
   .popup-image {
     flex: 3;
     margin-bottom: 0;
   }
-  
+
   .popup-description {
     flex: 2;
   }
+
+    .about .container {
+        flex-direction: row;
+        text-align: left;
+    }
+     .about-content {
+        flex: 1;
+    }
+     .about p {
+        margin-left: 0;
+     }
 }
 
 @media (min-width: 992px) {
@@ -718,7 +707,7 @@ footer .social-links a:hover {
   }
 }
 
-/* Mobile Menu */
+/* Mobile Menu and Image Adjustments */
 @media (max-width: 767px) {
   nav {
     position: fixed;
@@ -730,55 +719,56 @@ footer .social-links a:hover {
     padding: 2rem;
     transition: left 0.3s ease;
     z-index: 101;
+    overflow-y: auto; /* Allow scrolling if menu is too long */
   }
-  
+
   nav ul {
     flex-direction: column;
     gap: 2rem;
     margin-top: 3rem;
   }
-  
+
   nav ul li {
     margin-left: 0;
   }
-  
+
   nav ul li a {
     font-size: 1.5rem;
   }
-  
+
   .menu-icon {
     display: block;
     z-index: 102;
+     padding: 10px; /* Make icon easier to tap */
   }
-  
+
   .menu-toggle:checked ~ nav {
     left: 0;
   }
-  
+
   .menu-toggle:checked ~ .menu-icon .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
-  
+
   .menu-toggle:checked ~ .menu-icon .bar:nth-child(2) {
     opacity: 0;
   }
-  
+
   .menu-toggle:checked ~ .menu-icon .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }
-  
+
   .menu-toggle:checked ~ .menu-icon {
     position: fixed;
     right: 20px;
+     /* Adjust position if header padding changes */
   }
-  
+
   .menu-toggle:checked ~ .menu-icon .bar {
     background-color: var(--foreground);
   }
-  
-  .popup-buttons {
-    flex-direction: column;
-  }
+
+
   .social-icons {
     display: none;
   }
@@ -786,13 +776,60 @@ footer .social-links a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; 
-    text-align: center; 
+    justify-content: center;
+    text-align: center;
   }
 
   .skills h3 {
-    width: 100%; 
-    margin: 0;  
+    width: 100%;
+    margin: 0;
     justify-content: center;
   }
+     /* Adjust hero section for mobile */
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+    .hero-left {
+        gap: 0; /* Remove gap if social icons are hidden */
+        align-items: center;
+        flex: none;
+    }
+    .social-icons {
+        position: static; /* Remove absolute positioning if hidden */
+        flex-direction: row; /* Change direction if you decide to show them */
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    .hero-content {
+        max-width: 100%;
+    }
+    .hero h1 {
+        font-size: 2.5rem; /* Adjust font size */
+    }
+     .hero h2 {
+        font-size: 1.3rem; /* Adjust font size */
+    }
+     .hero p {
+        max-width: 100%;
+     }
+
+    /* --- image_1.svg (Hero Decoration) Mobile Adjustment --- */
+    .hero-decoration {
+        margin-top: 75%;
+    }
+
+    /* --- image_2.svg (About Decoration) Mobile Adjustment --- */
+    .about-decoration {
+        width: 150px; /* Make it smaller */
+        height: auto; /* Maintain aspect ratio */
+        margin-top: 2rem; /* Add some space above it */
+        
+    }
+
+
+    .contact-text h2 {
+        text-align: center; /* Center text on mobile */
+    }
 }
